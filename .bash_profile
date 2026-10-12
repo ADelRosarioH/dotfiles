@@ -1,3 +1,7 @@
+# The following lines were added by Docker Desktop to add commands to your PATH.
+export PATH="$PATH:/Users/anthony/.docker/bin"
+# End of Docker Desktop section.
+
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
@@ -48,3 +52,15 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+[[ -s "/Users/anthony/.gvm/scripts/gvm" ]] && source "/Users/anthony/.gvm/scripts/gvm"
+
+. "$HOME/.local/bin/env"
+. "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/anthony/.lmstudio/bin"
+# End of LM Studio CLI section
+
