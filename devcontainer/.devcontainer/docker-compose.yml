@@ -1,0 +1,25 @@
+# Delete the services a project doesn't use.
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/dotnet:10.0
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes: [pgdata:/var/lib/postgresql/data]
+
+  mongo:
+    image: mongo:7
+    volumes: [mongodata:/data/db]
+
+  redis:
+    image: redis:7
+
+volumes:
+  pgdata:
+  mongodata:

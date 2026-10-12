@@ -1,4 +1,4 @@
-# Brewfile — lean (2026-10-12). Databases & tooling run in Docker.
+# Brewfile — lean (2026-10-12). Dev runtimes (.NET, Node, Python, DBs) live in dev containers.
 # Restore:  brew bundle --file=~/Projects/dotfiles/Brewfile
 # Old full list: "X10 Pro/MacBook Pro 2026-10-12/lists/brew-all-formulae.txt"
 
@@ -23,16 +23,10 @@ brew "git-lfs"
 brew "gh"
 brew "lazygit"
 
-# ── Runtimes ─────────────────────────────────────
+# ── Host-only runtimes (Expo/iOS can't run in a container) ──
 brew "nvm"
-brew "pnpm@8"
-brew "bun"
-brew "python@3.13"
-brew "uv"
-brew "watchman"          # Expo / React Native
-brew "cocoapods"         # iOS builds
-cask "dotnet-sdk"        # .NET 10
-cask "dotnet-sdk@9"      # .NET 9
+brew "watchman"
+brew "cocoapods"
 
 # ── Cloud ────────────────────────────────────────
 brew "awscli"
@@ -66,3 +60,6 @@ cask "adobe-acrobat-reader"
 cask "libreoffice"
 
 mas "Xcode", id: 497799835
+
+# ── VS Code ──────────────────────────────────────
+vscode "ms-vscode-remote.remote-containers"
