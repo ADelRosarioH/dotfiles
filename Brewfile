@@ -57,6 +57,10 @@ brew "maven"
 brew "cocoapods"
 brew "watchman"
 brew "lua"
+brew "uv"
+brew "poetry"
+brew "bun"
+brew "rustup"
 
 # ── Databases & infra ────────────────────────────
 brew "postgresql@15"
@@ -97,6 +101,10 @@ brew "wimlib"
 brew "zsync"
 brew "usbutils"
 
+# ── .NET (core stack) ────────────────────────────
+cask "dotnet-sdk"           # .NET 10
+cask "dotnet-sdk@9"         # .NET 9
+
 # ── Work: remote access ──────────────────────────
 cask "citrix-workspace"     # Citrix — needed for work (Dev_Developer_VDI comes from here)
 cask "aws-vpn-client"       # Paiwares AWS VPN (.ovpn backed up on drive)
@@ -134,6 +142,7 @@ cask "visual-studio-code"
 cask "postman"
 cask "zoom"
 cask "claude"
+cask "claude-code"
 cask "chatgpt"
 cask "cyberduck"
 cask "postgres-app"
