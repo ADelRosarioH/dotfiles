@@ -22,13 +22,7 @@ open -a Raycast
 
 # ── Dock: dev + work apps only ────────────────────────────────────
 say "Dock"
-dockutil --remove all --no-restart >/dev/null
-for app in "/System/Applications/Utilities/Terminal.app" "Visual Studio Code" "Claude" "Docker" "DBeaver" "Xcode" \
-           "Google Chrome" "Firefox" "Citrix Workspace"; do
-  p="$app"; [[ "$p" == /* ]] || p="/Applications/$app.app"
-  [ -d "$p" ] && dockutil --add "$p" --no-restart >/dev/null && echo "  + $(basename "$p" .app)"
-done
-dockutil --add "$HOME/Downloads" --view grid --display stack --no-restart >/dev/null
+"$(dirname "$0")/dock.sh"
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0

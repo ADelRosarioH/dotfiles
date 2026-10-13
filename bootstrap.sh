@@ -5,7 +5,7 @@ git pull origin main
 
 doIt() {
   rsync -avh --no-perms \
-    --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
+    --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "dock.sh" \
     --exclude ".macos" --exclude "Brewfile" --exclude "devcontainer/" \
     --exclude "README.md" --exclude "LICENSE-MIT.txt" \
     . ~
