@@ -15,7 +15,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-mod
 | `.zshrc` | History, plugins, tools (zoxide, fzf, direnv, starship), aliases, `proj`, `devc`, `port` |
 | `.zsh_plugins.txt` | antidote plugin list |
 | `.config/starship.toml` | Prompt (Catppuccin colors) |
-| `.macos` | macOS tweaks — not run automatically: `./.macos` |
+| `.macos` | Raycast on ⌘Space, dev Dock, Finder/animation/screenshot tweaks — run once: `./.macos` |
 | `devcontainer/` | Starter: `devc` in any project |
 | `Brewfile` | `brewcheck` lists anything installed that isn't in it |
 
