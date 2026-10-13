@@ -50,8 +50,10 @@ alias d='docker'
 alias dc='docker compose'
 alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dprune='docker system prune -f'
+alias lzd='lazydocker'
 
 # ── macOS ─────────────────────────────────────────
+alias top='btop'
 alias update='brew update && brew upgrade && brew cleanup && rustup update && antidote update'
 alias brewcheck='brew bundle cleanup --file ~/Projects/dotfiles/Brewfile'   # lists strays, removes nothing
 alias flush='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
@@ -75,4 +77,3 @@ devc() {
   cp -R ~/Projects/dotfiles/devcontainer/.devcontainer . && echo "Added .devcontainer → VS Code: Reopen in Container"
 }
 
-[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh

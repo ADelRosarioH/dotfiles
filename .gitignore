@@ -14,3 +14,15 @@ Thumbs.db
 .Trashes
 
 **/.claude/settings.local.json
+
+# Secrets & local env
+.env
+.env.*
+!.env.example
+.direnv/
+
+# Dependencies & editor junk
+node_modules/
+.idea/
+*.swp
+*.swo

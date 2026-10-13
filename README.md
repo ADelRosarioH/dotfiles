@@ -19,4 +19,4 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-mod
 | `devcontainer/` | Starter: `devc` in any project |
 | `Brewfile` | `brewcheck` lists anything installed that isn't in it |
 
-Set iTerm2's font to **JetBrainsMono Nerd Font** for the prompt icons.
+Terminal.app → Settings → Profiles → pick one → **Default** → Font: **JetBrainsMono Nerd Font** (for the prompt icons).

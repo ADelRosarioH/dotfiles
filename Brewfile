@@ -24,6 +24,10 @@ brew "bat"
 brew "ripgrep"
 brew "fd"
 cask "font-jetbrains-mono-nerd-font"
+brew "git-delta"     # git diffs
+brew "lazydocker"    # Docker TUI
+brew "btop"          # system monitor
+brew "tlrc"          # tldr pages
 
 # ── Git ──────────────────────────────────────────
 brew "git"
@@ -46,7 +50,6 @@ cask "zoom"
 
 # ── Dev apps ─────────────────────────────────────
 cask "docker-desktop"
-cask "iterm2"
 cask "visual-studio-code"
 cask "dbeaver-community"
 cask "claude"
@@ -57,6 +60,9 @@ cask "google-chrome"
 cask "firefox"
 cask "bitwarden"
 cask "raycast"
+cask "stats"
+cask "jordanbaird-ice"
+cask "alt-tab"
 cask "monitorcontrol"
 cask "logi-options+"
 cask "the-unarchiver"
