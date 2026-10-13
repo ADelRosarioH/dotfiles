@@ -141,7 +141,7 @@ defaults write com.apple.Siri StatusMenuVisible -bool false
 
 # ── Battery & quiet ───────────────────────────────────────────────
 say "Low Power Mode on battery, clean app launches, no Photos pop-up"
-sudo pmset -b lowpowermode 1
+sudo pmset -b powermode 1 2>/dev/null || sudo pmset -b lowpowermode 1   # macOS 14+: powermode (1 = Low Power)
 defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 defaults write com.apple.loginwindow TALLogoutSavesState -bool false
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
