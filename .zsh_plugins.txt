@@ -1,5 +1,20 @@
+# antidote plugins — `antidote update` to upgrade
+
+# Completions
+zsh-users/zsh-completions path:src kind:fpath
+
+# Oh My Zsh libs + plugins, without the framework
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/git              # gst, gco, gcmsg, gp, glog…
+ohmyzsh/ohmyzsh path:plugins/gh
+ohmyzsh/ohmyzsh path:plugins/docker
+ohmyzsh/ohmyzsh path:plugins/docker-compose   # dcup, dcdn, dclf…
+ohmyzsh/ohmyzsh path:plugins/nvm              # lazy-loaded, see .zshrc
+ohmyzsh/ohmyzsh path:plugins/rust
+ohmyzsh/ohmyzsh path:plugins/macos            # ofd, cdf, pfd…
+
+# Quality of life (keep these last)
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-completions
-zsh-users/zsh-docker
-zexoide
-zoxide
+zsh-users/zsh-history-substring-search
+zdharma-continuum/fast-syntax-highlighting

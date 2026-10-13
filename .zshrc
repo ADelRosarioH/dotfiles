@@ -1,163 +1,78 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# ~/.zshrc — plugins in ~/.zsh_plugins.txt (antidote), prompt in ~/.config/starship.toml
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# ── History ───────────────────────────────────────
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt share_history hist_ignore_all_dups hist_ignore_space hist_reduce_blanks extended_history
+setopt auto_cd interactive_comments
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+export EDITOR="code --wait"
+export LANG=en_US.UTF-8
+export BAT_THEME="OneHalfDark"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ── nvm: host-only (Expo/iOS), lazy so shells start fast ──
+export NVM_DIR="$HOME/.nvm"
+zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' lazy-cmd npx pnpm corepack expo eas
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git direnv)
-
-# antidote pluging manager
-source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+# ── Plugins ───────────────────────────────────────
+source "$(brew --prefix)/opt/antidote/share/antidote/antidote.zsh"
 antidote load
 
-source $ZSH/oh-my-zsh.sh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-# User configuration
+# ── Tools ─────────────────────────────────────────
+eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"        # z <dir>, zi = interactive
+source <(fzf --zsh)              # Ctrl-R history, Ctrl-T files, Alt-C dirs
+eval "$(starship init zsh)"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# ── Files ─────────────────────────────────────────
+alias ls='eza --group-directories-first --icons=auto'
+alias ll='eza -l --git --group-directories-first --icons=auto'
+alias la='eza -la --git --group-directories-first --icons=auto'
+alias lt='eza --tree --level=2 --git-ignore --icons=auto'
+alias cat='bat --paging=never'
+alias del='trash'                # to the Trash, not gone
+alias p='cd ~/Projects'
+alias dl='cd ~/Downloads'
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# ── Git / GitHub ──────────────────────────────────
+alias g='git'
+alias prs='gh pr list'
+alias prv='gh pr view --web'
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# ── Docker / dev containers ───────────────────────
+alias d='docker'
+alias dc='docker compose'
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dprune='docker system prune -f'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# ── macOS ─────────────────────────────────────────
+alias update='brew update && brew upgrade && brew cleanup && rustup update && antidote update'
+alias brewcheck='brew bundle cleanup --file ~/Projects/dotfiles/Brewfile'   # lists strays, removes nothing
+alias flush='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
+alias localip='ipconfig getifaddr en0'
+alias myip='curl -s https://ifconfig.me; echo'
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# ── Functions ─────────────────────────────────────
+mkd()  { mkdir -p "$@" && cd "$_"; }
+port() { lsof -nP -iTCP:"$1" -sTCP:LISTEN; }                 # who's on port N
+serve(){ python3 -m http.server "${1:-8000}"; }
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# Jump to any repo under ~/Projects
+proj() {
+  local d
+  d=$(find ~/Projects -mindepth 2 -maxdepth 4 -type d -name .git -prune 2>/dev/null | sed 's|/.git$||' | fzf --height 40%) && cd "$d"
+}
 
-# pnpm
-export PNPM_HOME="/Users/anthony/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-# JAVA
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-# JAVA END
-# ANDROID STUDIO
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-# ANDROID STUDIO end
-# PYTHON
-# Homebrew: Python
-export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
-# PYTHON END
+# Drop the dev container starter into the current project
+devc() {
+  [ -d .devcontainer ] && { echo ".devcontainer already exists"; return 1; }
+  cp -R ~/Projects/dotfiles/devcontainer/.devcontainer . && echo "Added .devcontainer → VS Code: Reopen in Container"
+}
 
-[[ -s "/Users/anthony/.gvm/scripts/gvm" ]] && source "/Users/anthony/.gvm/scripts/gvm"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/anthony/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-alias docker="/Applications/Docker.app/Contents/Resources/bin/docker"
-# End of Docker CLI completions
-
-# Added by Antigravity
-export PATH="/Users/anthony/.antigravity/antigravity/bin:$PATH"
-
-#DOCKER 
-export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
-#DOCKER END
-
-# bun completions
-[ -s "/Users/anthony/.bun/_bun" ] && source "/Users/anthony/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-. "$HOME/.local/bin/env"
-
-alias claude-mem='/Users/anthony/.bun/bin/bun "/Users/anthony/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/anthony/.lmstudio/bin"
-# End of LM Studio CLI section
-
+[ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh

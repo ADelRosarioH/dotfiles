@@ -1,27 +1,33 @@
-# Brewfile — lean (2026-10-12). Dev runtimes (.NET, Node, Python, DBs) live in dev containers.
+# Brewfile — lean (2026-10-13). Rust via rustup (see README). Dev runtimes (.NET, Node, Python, DBs) live in dev containers.
 # Restore:  brew bundle --file=~/Projects/dotfiles/Brewfile
 # Old full list: "X10 Pro/MacBook Pro 2026-10-12/lists/brew-all-formulae.txt"
 
-tap "jesseduffield/lazygit"
 
 # ── Shell & CLI ──────────────────────────────────
 brew "zsh"
 brew "antidote"
 brew "coreutils"
-brew "grep"
 brew "direnv"
-brew "tree"
 brew "trash"
 brew "jq"
 brew "wget"
 brew "gnupg"
 brew "mas"
 
+# ── Shell UX (see .zshrc) ────────────────────────
+brew "starship"
+brew "zoxide"
+brew "fzf"
+brew "eza"
+brew "bat"
+brew "ripgrep"
+brew "fd"
+cask "font-jetbrains-mono-nerd-font"
+
 # ── Git ──────────────────────────────────────────
 brew "git"
 brew "git-lfs"
 brew "gh"
-brew "lazygit"
 
 # ── Host-only runtimes (Expo/iOS can't run in a container) ──
 brew "nvm"
@@ -41,9 +47,7 @@ cask "zoom"
 cask "docker-desktop"
 cask "iterm2"
 cask "visual-studio-code"
-cask "zed"
 cask "dbeaver-community"
-cask "expo-orbit"
 cask "claude"
 cask "claude-code"
 

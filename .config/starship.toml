@@ -1,0 +1,40 @@
+"$schema" = "https://starship.rs/config-schema.json"
+add_newline = true
+format = "$directory$git_branch$git_status$nodejs$dotnet$rust$python$docker_context$cmd_duration$line_break$character"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold #89b4fa"
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "#cba6f7"
+
+[git_status]
+style = "#f38ba8"
+
+[nodejs]
+format = "[ $version]($style) "
+style = "#a6e3a1"
+
+[dotnet]
+format = "[.NET $version]($style) "
+style = "#b4befe"
+
+[rust]
+format = "[ $version]($style) "
+
+[docker_context]
+format = "[ $context]($style) "
+only_with_files = true
+
+[cmd_duration]
+min_time = 2000
+format = "[took $duration]($style) "
+style = "#f9e2af"
+
+[character]
+success_symbol = "[❯](bold #a6e3a1)"
+error_symbol = "[❯](bold #f38ba8)"
