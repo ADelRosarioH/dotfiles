@@ -36,6 +36,10 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock minimize-to-application -bool true
 defaults write com.apple.dock mineffect -string "scale"
 
+# ── Window tiling: small gaps around arranged windows ─────────────
+say "Margins between tiled windows"
+defaults write com.apple.WindowManager EnableTiledWindowMargins -bool true
+
 # ── Performance ───────────────────────────────────────────────────
 say "Snappier animations"
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
