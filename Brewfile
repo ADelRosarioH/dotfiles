@@ -13,6 +13,7 @@ brew "jq"
 brew "wget"
 brew "gnupg"
 brew "mas"
+brew "defaultbrowser"
 
 # ── Shell UX (see .zshrc) ────────────────────────
 brew "starship"

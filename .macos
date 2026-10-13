@@ -20,6 +20,10 @@ defaults write com.raycast.macos raycastGlobalHotkey -string "Command-49"
 osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Raycast.app", hidden:true}' >/dev/null 2>&1
 open -a Raycast
 
+# ── Default browser ───────────────────────────────────────────────
+say "Firefox as default browser (click \"Use Firefox\" in the dialog)"
+defaultbrowser firefox
+
 # ── Dock: dev + work apps only ────────────────────────────────────
 say "Dock"
 "$(dirname "$0")/dock.sh"
