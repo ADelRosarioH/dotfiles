@@ -14,6 +14,8 @@ brew "wget"
 brew "gnupg"
 brew "mas"
 brew "defaultbrowser"
+brew "duti"            # set default apps per file type
+brew "ffmpeg"
 
 # ── Shell UX (see .zshrc) ────────────────────────
 brew "starship"
@@ -58,6 +60,7 @@ cask "claude-code"
 # ── Everyday ─────────────────────────────────────
 cask "google-chrome"
 cask "firefox"
+cask "finicky"          # routes links: Slack → Firefox Work profile, rest → Personal
 cask "bitwarden"
 cask "raycast"
 cask "stats"

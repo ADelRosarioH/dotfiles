@@ -16,6 +16,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-mod
 | `.zsh_plugins.txt` | antidote plugin list |
 | `.config/starship.toml` | Prompt (Catppuccin colors) |
 | `.macos` | Raycast on ⌘Space, dev Dock, Finder/animation/screenshot tweaks — run once: `./.macos` |
+| `.finicky.js` | Link routing: Slack links → Firefox "Work" profile, everything else → "Personal" |
 | `dock.sh` | Rebuild the Dock (dev + work apps) — also run by `.macos` |
 | `devcontainer/` | Starter: `devc` in any project |
 | `Brewfile` | `brewcheck` lists anything installed that isn't in it |

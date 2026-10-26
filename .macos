@@ -21,8 +21,18 @@ osascript -e 'tell application "System Events" to make login item at end with pr
 open -a Raycast
 
 # ── Default browser ───────────────────────────────────────────────
-say "Firefox as default browser (click \"Use Firefox\" in the dialog)"
-defaultbrowser firefox
+say "Finicky as default browser — routes links to Firefox profiles (click \"Use Finicky\")"
+defaultbrowser finicky
+
+# ── VLC for all audio & video ─────────────────────────────────────
+say "VLC as default audio/video player"
+for t in public.movie public.audio public.mpeg-4 com.apple.quicktime-movie public.mp3 \
+         public.mpeg-4-audio com.microsoft.waveform-audio public.aiff-audio public.avi; do
+  duti -s org.videolan.vlc "$t" all 2>/dev/null
+done
+for e in mkv webm avi mov mp4 m4v flv wmv mpg mpeg ts mp3 m4a aac flac wav ogg opus wma; do
+  duti -s org.videolan.vlc ".$e" all 2>/dev/null
+done
 
 # ── Dock: dev + work apps only ────────────────────────────────────
 say "Dock"

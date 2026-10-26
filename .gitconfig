@@ -211,3 +211,5 @@
 	navigate = true
 	line-numbers = true
 	syntax-theme = OneHalfDark
+[includeIf "gitdir:~/Projects/anthony-paiwares/"]
+	path = ~/.gitconfig-paiwares

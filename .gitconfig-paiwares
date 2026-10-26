@@ -1,0 +1,4 @@
+# Loaded for repos under ~/Projects/anthony-paiwares/ (see includeIf in .gitconfig)
+# gh's credential helper picks the anthony-paiwares token for push/pull.
+[credential "https://github.com"]
+	username = anthony-paiwares
