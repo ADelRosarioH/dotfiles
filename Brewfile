@@ -60,7 +60,7 @@ cask "claude-code"
 # ── Everyday ─────────────────────────────────────
 cask "google-chrome"
 cask "firefox"
-cask "finicky"          # routes links: Slack → Firefox Work profile, rest → Personal
+cask "finicky"          # needs ≥ 4.4 for Firefox profiles (4.4.0-alpha until stable)
 cask "bitwarden"
 cask "raycast"
 cask "stats"
